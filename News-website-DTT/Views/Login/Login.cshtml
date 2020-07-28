@@ -1,0 +1,95 @@
+﻿@model News_website_DTT.Models.User
+@{
+    ViewBag.Title = "Login";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<style>
+
+    * {
+        border-radius: 5px;
+    }
+
+    body {
+        display: flex;
+    }
+
+    #login {
+        display: flex;
+        align-self: center;
+        align-content: center;
+        margin: auto;
+        min-width: 200px;
+        width: 50%;
+        min-height: 40vh;
+        background-color: lightgoldenrodyellow;
+        box-shadow: rgba(0,0,0,0.4) 0px 0px 10px;
+        border: 1px solid black;
+        padding: 1%;
+    }
+
+    table {
+        text-align: center;
+        table-layout: auto;
+        margin: auto;
+        width: 100%;
+        border: none;
+        padding: 2px;
+        border-spacing: 20px;
+    }
+
+    tr, td {
+        padding: 1% 0;
+    }
+
+    input {
+        border: 1px solid black;
+        padding: 1%;
+        width: 100%;
+    }
+
+    .errorMsg:not(:empty) {
+        color: white;
+        text-align: left;
+        font-size: 10px;
+        width: 100%;
+        height: auto;
+        padding: 1%;
+        background-color: red;
+        border: 1px solid black;
+    }
+</style>
+<body>
+    <div id="login">
+        <form asp-action="Login" method="post" style="width: 100%; align-self: center">
+            <table>
+                <tr>
+                    <td align="center" colspan="2">
+                        <label class="errorMsg">@ViewBag.Error</label>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <label asp-for="UserName"></label>
+                    </td>
+                    <td>
+                        <input asp-for="UserName" placeholder="Your admin username" />
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <label asp-for="Password"></label>
+                    </td>
+                    <td>
+                        <input asp-for="Password" placeholder="Your admin password" />
+                    </td>
+                </tr>
+                <tr>
+                    <td align="center" colspan="2">
+                        <input class="btnLogin" type="submit" value="Login" />
+                    </td>
+                </tr>
+            </table>
+        </form>
+    </div>
+</body>
+

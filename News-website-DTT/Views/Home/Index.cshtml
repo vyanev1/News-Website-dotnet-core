@@ -1,0 +1,19 @@
+﻿@model IEnumerable<Article>
+
+@{
+    ViewData["Title"] = "Home Page";
+}
+
+<div class="articles">
+    @foreach (var article in Model)
+    {
+        <div id="article">
+            <div class="date" style="display:inline-block;">@article.Date.ToString("dd MMM yyy")</div>
+            <h3 style="display:inline;">
+                <a class="orange-title" href="@Url.Action("Article", "Articles", article)">@article.Title</a>
+            </h3>
+            <p id="subtitle">@article.Subtitle</p>
+        </div>
+    }
+    <div class="returnBtn"><a href="@Url.Action("Archive", "Articles", new { Model });">Article Archive</a></div>
+</div>

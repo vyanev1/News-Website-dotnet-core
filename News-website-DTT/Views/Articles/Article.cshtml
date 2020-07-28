@@ -1,0 +1,19 @@
+﻿@model News_website_DTT.Models.Article
+@{
+    ViewBag.Title = Model.Title;
+}
+<style>
+    .returnBtn {
+        padding: 10px 0px;
+    }
+</style>
+<div class="articles">
+    <h1 class="title">@Model.Title</h1>
+    <p>
+        <div class="subtitle">@Model.Subtitle</div>
+        <div class="content">@Model.Content</div>
+    </p>
+    <div class="date">PUBLISHED ON @Model.Date.ToString("dd MMM yyyy")</div>
+    <div><a class="returnBtn" asp-controller="Home" asp-action="Index">Return to Homepage</a></div>
+</div>
+

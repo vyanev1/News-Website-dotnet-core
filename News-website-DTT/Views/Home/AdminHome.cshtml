@@ -1,0 +1,25 @@
+﻿@model IEnumerable<Article>
+@{
+    ViewBag.Title = "Admin Home";
+    Layout = "~/Views/Shared/_Admin.cshtml";
+}
+
+<h1 class="title">All Articles</h1>
+
+<table id="articles" class="articles-table">
+    <tr>
+        <th>Publication Date</th>
+        <th>Article</th>
+    </tr>
+    @foreach (var article in Model)
+    {
+        <tr onclick="location.href='@Url.Action("EditArticle","Articles",article)'" style="cursor: pointer">
+            <td>@article.Date.ToString("dd MMM yyy")</td>
+            <td>@article.Title</td>
+        </tr>
+    }
+</table>
+<p id="count">@Model.Count() articles in total.</p>
+<a asp-action="NewArticle" asp-controller="Articles">Add a New Article</a>
+
+

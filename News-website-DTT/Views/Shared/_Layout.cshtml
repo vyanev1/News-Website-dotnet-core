@@ -1,0 +1,39 @@
+﻿@using Microsoft.AspNetCore.Http;
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"]</title>
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/css/site.css" />
+</head>
+<body>
+    <div class="container">
+        <header>
+            <a asp-controller="Home" asp-action="Index">
+                <img class="header-content" src="~/Images/DTT logo.png" alt="DTT - Apps Web Games" tag="logo">
+            </a>
+            <hr>
+        </header>
+
+        <main role="main" class="main_content">
+            @RenderBody()
+        </main>
+
+        <footer class="footer">
+            <hr>
+            <div class ="footer-content" style="display:flex; justify-content: space-between">
+                <span>
+                    DTT Multimedia &copy; 2015. All rights reserved. <a href="@Url.Action("AdminHome","Home")">Site Admin</a>
+                </span>
+            </div>
+        </footer>
+
+        <script src="~/lib/jquery/dist/jquery.min.js"></script>
+        <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+        <script src="~/js/site.js" asp-append-version="true"></script>
+        @RenderSection("Scripts", required: false)
+    </div>
+</body>
+</html>

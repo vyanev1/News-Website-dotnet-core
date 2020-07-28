@@ -1,0 +1,142 @@
+﻿#logo {
+    text-align: left;
+    position: absolute;
+    top: 0px;
+    left: 0px;
+}
+
+html {
+    font-family: Calibri;
+    font-size: 14px;
+    line-height: 25px;
+    background-color: darkcyan;
+}
+
+body {
+    background-color: darkcyan;
+}
+
+.main_content {
+    height: 100%;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    padding: 10px;
+}
+
+.container {
+    display: flex;
+    flex-direction: column;
+    text-align: left;
+    padding: 20px;
+    background-color: white;
+    margin: 1% auto;
+    /*min-height: 96vh;*/
+    width: 80%;
+    border-radius: 10px;
+}
+
+.articles {
+    text-align: left;
+    margin-left: 0;
+    font-size: 15px;
+    width: 75%;
+}
+
+
+.title {
+    color: rgb(235,83,64);
+    margin-bottom: 20px;
+}
+
+.orange-title {
+    color: orange;
+    text-decoration: none;
+}
+
+.subtitle {
+    font-style: italic;
+}
+
+.date {
+    font-size: 14px;
+    color: rgb(235,83,64);
+    margin: 10px 0px;
+}
+
+hr {
+    margin: 15px auto;
+    height: 1.5px;
+    background-color: darkcyan;
+    width: 100%;
+    border: none;
+}
+
+.returnBtn {
+    margin: 15px 0;
+}
+
+/*
+a {
+    color: #0366d6;
+}
+*/
+
+a:hover, a:active {
+    text-decoration: none;
+}
+
+header, footer {
+    font-size: 13px;
+    width: 100%;
+    clear: both;
+}
+
+.header-content, .footer-content {
+    padding: 10px 0px;
+}
+
+footer {
+    align-self: end;
+}
+
+button, .btnLogin {
+    text-decoration: solid;
+    font-weight: bold;
+    padding: 5px;
+    width: 150px;
+    margin: 20px;
+    color: white;
+    background-color: darkorange;
+    border: solid 1px black;
+    border-radius: 5px;
+}
+
+.articles-table {
+    font-family: arial, sans-serif;
+    border-collapse: collapse;
+    border: 2px solid darkcyan;
+    width: 100%;
+}
+
+.articles-table th {
+    text-align: left;
+    padding: 8px;
+    background-color: rgb(235,83,64);
+    color: white;
+}
+
+.articles-table td {
+    text-align: left;
+    padding: 8px;
+}
+
+.articles-table tr:nth-child(even) {
+    background-color: wheat;
+}
+
+@media only screen and (max-width: 600px) {
+    .articles {
+        width: 100%;
+    }
+}

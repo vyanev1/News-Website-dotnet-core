@@ -1,0 +1,34 @@
+﻿@model IEnumerable<Article>
+@{
+    ViewBag.Title = "Archive";
+}
+
+<style>
+    #article {
+        padding: 1% 0;
+    }
+    #subtitle {
+        margin: 0 10%;
+    }
+    .date {
+        font-weight: bold;
+        display: inline;
+        padding-right: 1%;
+    }
+</style>
+<h1 class="title">Article Archive</h1>
+<div class="articles">
+    @foreach (var article in Model)
+    {
+        <div id="article">
+            <div class="date">@article.Date.ToString("dd MMM yyy")</div>
+            <h3 style="display:inline">
+                <a class="orange-title" href="@Url.Action("Article", "Articles", article)">@article.Title</a>
+            </h3>
+            <p id="subtitle">@article.Subtitle</p>
+        </div>
+    }
+    <div id="count" style="margin: 15px 0;">@Model.Count() articles in total.</div>
+    <div class="returnBtn"><a asp-controller="Home" asp-action="Index">Return to Homepage</a></div>
+</div>
+

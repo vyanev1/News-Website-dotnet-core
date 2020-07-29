@@ -36,6 +36,22 @@ body {
     border-radius: 10px;
 }
 
+.login-container {
+    display: flex;
+    flex-direction: column;
+    margin: auto;
+    justify-content: center;
+    min-width: 200px;
+    width: 50%;
+    min-height: 40vh;
+    background-color: lightgoldenrodyellow;
+    box-shadow: rgba(0,0,0,0.4) 0px 0px 10px;
+    border: 1px solid black;
+    border-radius: 5px;
+    padding: 1%;
+}
+
+
 .articles {
     text-align: left;
     margin-left: 0;
@@ -50,7 +66,7 @@ body {
 }
 
 .orange-title {
-    color: orange;
+    color: orange !important;
     text-decoration: none;
 }
 
@@ -76,12 +92,6 @@ hr {
     margin: 15px 0;
 }
 
-/*
-a {
-    color: #0366d6;
-}
-*/
-
 a:hover, a:active {
     text-decoration: none;
 }
@@ -105,7 +115,7 @@ button, .btnLogin {
     font-weight: bold;
     padding: 5px;
     width: 150px;
-    margin: 20px;
+    margin: 20px auto;
     color: white;
     background-color: darkorange;
     border: solid 1px black;

@@ -13,6 +13,7 @@ namespace News_website_DTT.Models
         public int Id { get; set; }
         
         [Required]
+        [Display(Name = "Username")]
         public string UserName { get; set; }
 
         [Required]

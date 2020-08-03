@@ -54,7 +54,7 @@ namespace News_website_DTT.Controllers
             }
             else
             {
-                return RedirectToAction("Login", "Login");
+                return RedirectToAction("Login", "Account");
             }
         }
 
@@ -74,7 +74,7 @@ namespace News_website_DTT.Controllers
             }
             else
             {
-                return RedirectToAction("Login", "Login");
+                return RedirectToAction("Login", "Account");
             }
         }
 

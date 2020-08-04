@@ -21,11 +21,9 @@ namespace News_website_DTT
         public Startup(IConfiguration configuration)
         {
             Configuration = configuration;
-            _configuration = configuration;
         }
 
         public IConfiguration Configuration { get; }
-        internal static IConfiguration _configuration { get; private set; }
 
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
@@ -33,16 +31,14 @@ namespace News_website_DTT
             services.AddDbContext<ApplicationDbContext>(options =>
                 options.UseMySql(Configuration.GetConnectionString("NewsWebsiteDb")));
 
-            services.AddDefaultIdentity<IdentityUser>(options => options.SignIn.RequireConfirmedAccount = true)
+            services.AddIdentity<IdentityUser, IdentityRole>()
                 .AddEntityFrameworkStores<ApplicationDbContext>();
 
             services.AddControllersWithViews();
             
             services.AddRazorPages();
-            
-            services.AddMvc().AddSessionStateTempDataProvider();
-            
-            services.AddSession();
+
+            services.AddMvc();
 
             services.AddScoped<IArticleRepository, ArticleRepository>();
         }
@@ -57,7 +53,8 @@ namespace News_website_DTT
             }
             else
             {
-                app.UseExceptionHandler("/Home/Error");
+                app.UseExceptionHandler("/Error");
+                app.UseStatusCodePagesWithReExecute("/Error/{0}");
                 // The default HSTS value is 30 days. You may want to change this for production scenarios, see https://aka.ms/aspnetcore-hsts.
                 app.UseHsts();
             }
@@ -65,10 +62,8 @@ namespace News_website_DTT
 
             app.UseStaticFiles();
 
-            app.UseSession();
-
             app.UseRouting();
-
+            
             app.UseAuthentication();
 
             app.UseAuthorization();

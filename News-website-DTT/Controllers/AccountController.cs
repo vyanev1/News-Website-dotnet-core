@@ -30,7 +30,8 @@ namespace News_website_DTT.Controllers
         {
             if (ModelState.IsValid)
             {
-                var result = await signInManager.PasswordSignInAsync(model.UserName, model.Password, model.RememberMe, false);
+                var user = await userManager.FindByNameAsync(model.UserName);
+                var result = await signInManager.PasswordSignInAsync(user, model.Password, model.RememberMe, false);
                 
                 if (result.Succeeded)
                 {
@@ -39,8 +40,13 @@ namespace News_website_DTT.Controllers
 
                 ModelState.AddModelError("", "Invalid login attempt.");
             }
-
             return View(model);
+        }
+
+        public async Task<IActionResult> Logout()
+        {
+            await signInManager.SignOutAsync();
+            return RedirectToAction("Index", "Home");
         }
 
         public IActionResult Register()

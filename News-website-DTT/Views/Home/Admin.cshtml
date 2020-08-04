@@ -13,13 +13,13 @@
     </tr>
     @foreach (var article in Model)
     {
-        <tr onclick="location.href='@Url.Action("EditArticle","Articles",article)'" style="cursor: pointer">
+        <tr onclick="location.href='@Url.Action("Edit","Articles",article)'" style="cursor: pointer">
             <td>@article.Date.ToString("dd MMM yyy")</td>
             <td>@article.Title</td>
         </tr>
     }
 </table>
 <p id="count">@Model.Count() articles in total.</p>
-<a asp-action="NewArticle" asp-controller="Articles">Add a New Article</a>
+<a asp-action="New" asp-controller="Articles">Add a New Article</a>
 
 

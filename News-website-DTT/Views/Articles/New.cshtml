@@ -1,0 +1,44 @@
+﻿@model Article
+@{
+    ViewData["Title"] = "New Article";
+    Layout = "~/Views/Shared/_Admin.cshtml";
+}
+
+<h1 class="title">New Article</h1>
+<form asp-action="New" asp-controller="Articles" class="article-form">
+    <table>
+        <tr>
+            <td>
+                <label asp-for="Title"></label>
+                <input asp-for="Title" placeholder="Name of the article" />
+            </td>
+        </tr>
+
+        <tr>
+            <td>
+                <label asp-for="Subtitle"></label>
+                <textarea asp-for="Subtitle" id="inputSubtitle" placeholder="Summary of the article"></textarea>
+            </td>
+        </tr>
+
+        <tr>
+            <td>
+                <label asp-for="Content"></label>
+                <textarea asp-for="Content" id="inputContent" placeholder="Article Content"></textarea>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <label asp-for="Date"></label>
+                <input asp-for="Date" type="date" placeholder="Publication Date" />
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <button type="submit" class="orange-btn">Save Changes</button>
+                <button asp-action="Admin" asp-controller="Home" class="orange-btn">Cancel</button>
+            </td>
+        </tr>
+    </table>
+</form>
+

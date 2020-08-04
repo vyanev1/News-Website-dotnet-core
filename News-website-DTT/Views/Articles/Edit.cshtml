@@ -1,0 +1,46 @@
+﻿@model Article
+@{
+    ViewData["Title"] = "Edit Article";
+    Layout = "~/Views/Shared/_Admin.cshtml";
+}
+
+<h1 class="title">Edit Article</h1>
+<form asp-action="Update" asp-controller="Articles" class="article-form">
+    <input asp-for="Id" value="@Model.Id" type="hidden">
+    <table>
+        <tr>
+            <td>
+                <label asp-for="Title"></label>
+                <input asp-for="Title"/>
+            </td>
+        </tr>
+
+        <tr>
+            <td>
+                <label asp-for="Subtitle"></label>
+                <textarea asp-for="Subtitle" id="inputSubtitle"></textarea>
+            </td>
+        </tr>
+
+        <tr>
+            <td>
+                <label asp-for="Content"></label>
+                <textarea asp-for="Content" id="inputContent"></textarea>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <label asp-for="Date"></label>
+                <input asp-for="Date" type="date" value="@Model.Date.ToString("yyyy-MM-dd")" />
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <button type="submit" class="orange-btn">Save Changes</button>
+                <button asp-action="Admin" asp-controller="Home" class="orange-btn">Cancel</button>
+            </td>
+        </tr>
+    </table>
+</form>
+
+<a href="@Url.Action("Delete","Articles",Model)" class="mt-3">Delete This Article</a>

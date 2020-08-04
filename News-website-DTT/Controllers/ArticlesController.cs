@@ -8,6 +8,7 @@ using System.Collections.Generic;
 
 namespace News_website_DTT.Controllers
 {
+    [Authorize]
     public class ArticlesController : Controller
     {
         private IEnumerable<Article> _list;
@@ -19,63 +20,40 @@ namespace News_website_DTT.Controllers
             _list = articleRepository.ArticleList();
         }
 
-        public bool IsAuthorized()
+        [AllowAnonymous]
+        public IActionResult Article(int id)
         {
-            string UserName = HttpContext.Session.GetString("login");
-            string Admin = HttpContext.Session.GetString("admin");
-
-            if (UserName == null || Admin != "1")
-            {
-                return false;
-            }
-            else
-            {
-                ViewBag.Message = "You are logged in as " + UserName;
-                return true;
-            }
-        }
-
-        public IActionResult Article(Article model)
-        {
+            var model = _articleRepository.GetArticle(id);
             return View(model);
         }
 
+        [AllowAnonymous]
         public IActionResult Archive()
         {
             return View(_list);
         }
 
         [HttpGet]
-        public IActionResult NewArticle()
+        public IActionResult New()
         {
-            if (IsAuthorized())
-            {
-                return View();
-            }
-            else
-            {
-                return RedirectToAction("Login", "Login");
-            }
+            return View();
         }
 
         [HttpPost]
-        public IActionResult NewArticle(Article article)
+        public IActionResult New(Article article)
         {
-            _articleRepository.Add(article);
-            return RedirectToAction("AdminHome", "Home");
+            if (ModelState.IsValid)
+            {
+                _articleRepository.Add(article);
+                return RedirectToAction("AdminHome", "Home");
+            }
+            return View(article);
         }
 
         [HttpGet]
-        public IActionResult EditArticle(Article old)
+        public IActionResult Edit(Article old)
         {
-            if (IsAuthorized())
-            {
-                return View(old);
-            }
-            else
-            {
-                return RedirectToAction("Login", "Login");
-            }
+            return View(old);
         }
 
         public IActionResult Update(Article article)

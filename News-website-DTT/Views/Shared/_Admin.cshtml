@@ -22,14 +22,15 @@
 <body>
     <div class="container">
         <header>
-            <a asp-controller="Home" asp-action="Index">
+            <a asp-action="Index" asp-controller="Home">
                 <img class="header-content" src="~/Images/DTT logo.png" alt="DTT - Apps Web Games" tag="logo">
             </a>
             <hr>
             <div style="margin: 10px;">
-                <h5 id="title">Widget News Admin</h5>
+                <h5 class="title">Widget News Admin</h5>
                 <p>
-                    <div>@ViewBag.Message</div> <a href="@Url.Action("Logout","Login")">Log out</a>
+                    <span>You are logged in as @User.Identity.Name.</span>
+                    <a asp-action="Logout" asp-controller="Account">Log out</a>
                 </p>
             </div>
             <hr>
@@ -41,14 +42,17 @@
 
         <footer class="footer">
             <hr>
-            <div class="footer-content" style="display:flex; justify-content: space-between">
-                <span>
-                    DTT Multimedia &copy; 2015. All rights reserved. <a href="@Url.Action("AdminHome","Home")">Site Admin</a>
+            <nav class="navbar">
+                <span class="navbar-text">
+                    DTT Multimedia &copy; 2015. All rights reserved.
                 </span>
-                <span>
-                    <a href="@Url.Action("Logout","Login")">Log out</a>
-                </span>
-            </div>
+                <ul class="navbar-nav m-auto">
+                    <li class="nav-link">
+                        <a asp-action="Admin" asp-controller="Home" )">Site Admin</a>
+                    </li>
+                </ul>
+                <partial name="_LoginPartial" />
+            </nav>
         </footer>
     </div>
 

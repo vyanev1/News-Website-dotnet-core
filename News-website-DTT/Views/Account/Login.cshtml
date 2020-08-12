@@ -4,7 +4,7 @@
 }
 
 <div class="login-container">
-    <form asp-controller="Account" asp-action="Login" method="post">
+    <form asp-controller="Account" asp-action="Login" asp-route-returnUrl="@Context.Request.Query["ReturnUrl"]" method="post">
         <div asp-validation-summary="All" class="text-danger"></div>
         <div class="form-group row">
             <label asp-for="UserName" class="col-sm-2 col-form-label"></label>

@@ -26,7 +26,7 @@ namespace News_website_DTT.Controllers
         }
 
         [HttpPost]
-        public async Task<IActionResult> Login(LoginViewModel model, string ReturnUrl)
+        public async Task<IActionResult> Login(LoginViewModel model, string returnUrl)
         {
             if (ModelState.IsValid)
             {
@@ -38,9 +38,9 @@ namespace News_website_DTT.Controllers
 
                     if (result.Succeeded)
                     {
-                        if (!string.IsNullOrEmpty(ReturnUrl) && Url.IsLocalUrl(ReturnUrl))
+                        if (!string.IsNullOrEmpty(returnUrl) && Url.IsLocalUrl(returnUrl))
                         {
-                            return Redirect(ReturnUrl);
+                            return Redirect(returnUrl);
                         }
                         else
                         {

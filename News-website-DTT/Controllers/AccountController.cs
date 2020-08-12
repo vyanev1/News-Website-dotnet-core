@@ -38,7 +38,7 @@ namespace News_website_DTT.Controllers
 
                     if (result.Succeeded)
                     {
-                        if (!string.IsNullOrEmpty(ReturnUrl))
+                        if (!string.IsNullOrEmpty(ReturnUrl) && Url.IsLocalUrl(ReturnUrl))
                         {
                             return Redirect(ReturnUrl);
                         }

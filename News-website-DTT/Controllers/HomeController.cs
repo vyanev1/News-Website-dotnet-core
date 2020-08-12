@@ -28,7 +28,7 @@ namespace News_website_DTT.Controllers
             return View(_list);
         }
 
-        [Authorize]
+        [Authorize(Roles = "Admin")]
         public ActionResult Admin()
         {
             return View(_list);

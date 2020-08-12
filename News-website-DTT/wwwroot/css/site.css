@@ -33,6 +33,7 @@ body {
     margin: 1% auto;
     /*min-height: 96vh;*/
     width: 80%;
+    min-width: 450px;
     border-radius: 10px;
 }
 
@@ -41,14 +42,14 @@ body {
     flex-direction: column;
     margin: auto;
     justify-content: center;
-    min-width: 200px;
+    min-width: 400px;
     width: 50%;
     min-height: 40vh;
     background-color: lightgoldenrodyellow;
     box-shadow: rgba(0,0,0,0.4) 0px 0px 10px;
     border: 1px solid black;
     border-radius: 5px;
-    padding: 1%;
+    padding: 1em;
 }
 
 
@@ -116,10 +117,10 @@ footer {
 .orange-btn {
     text-decoration: solid;
     font-weight: bold;
-    padding: 5px;
-    width: 150px;
-    margin: 20px auto;
-    color: white;
+    padding: 0.5em;
+    width: auto;
+    margin: 1em auto;
+    color: white !important;
     background-color: darkorange;
     border: solid 1px black;
     border-radius: 5px;
@@ -188,8 +189,15 @@ footer {
     min-height: 400px;
 }
 
-@media only screen and (max-width: 600px) {
+@media only screen and (max-width: 1080px) {
     .articles {
         width: 100%;
+    }
+    .orange-title {
+        display: block;
+        margin-bottom: 5px;
+    }
+    .date {
+        margin: 5px 0px;
     }
 }

@@ -8,7 +8,7 @@ using System.Collections.Generic;
 
 namespace News_website_DTT.Controllers
 {
-    [Authorize]
+    [Authorize(Roles = "Admin")]
     public class ArticlesController : Controller
     {
         private IEnumerable<Article> _list;

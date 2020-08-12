@@ -26,19 +26,32 @@ namespace News_website_DTT.Controllers
         }
 
         [HttpPost]
-        public async Task<IActionResult> Login(LoginViewModel model)
+        public async Task<IActionResult> Login(LoginViewModel model, string ReturnUrl)
         {
             if (ModelState.IsValid)
             {
                 var user = await userManager.FindByNameAsync(model.UserName);
-                var result = await signInManager.PasswordSignInAsync(user, model.Password, model.RememberMe, false);
-                
-                if (result.Succeeded)
-                {
-                    return RedirectToAction("Index", "Home");
-                }
 
-                ModelState.AddModelError("", "Invalid login attempt.");
+                if (user != null)
+                {
+                    var result = await signInManager.PasswordSignInAsync(user, model.Password, model.RememberMe, false);
+
+                    if (result.Succeeded)
+                    {
+                        if (!string.IsNullOrEmpty(ReturnUrl))
+                        {
+                            return Redirect(ReturnUrl);
+                        }
+                        else
+                        {
+                            return RedirectToAction("Index", "Home");
+                        }
+                    }
+                }
+                else
+                {
+                    ModelState.AddModelError("", "Invalid login attempt.");
+                }
             }
             return View(model);
         }

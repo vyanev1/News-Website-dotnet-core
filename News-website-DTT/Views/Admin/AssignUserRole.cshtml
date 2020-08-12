@@ -1,0 +1,20 @@
+﻿@model UserRoleViewModel
+@{
+    ViewBag.Title = "Assign new user to role";
+}
+
+<div class="login-container">
+    <form asp-action="AssignUserRole" asp-controller="Admin" method="post">
+        <input hidden asp-for="RoleId" />
+        <div asp-validation-summary="All" class="text-danger"></div>
+        <div class="form-group">
+            <label asp-for="UserName"></label>
+            <input asp-for="UserName" class="form-control" />
+            <span asp-validation-for="UserName" class="text-danger"></span>
+        </div>
+        <div class="form-group">
+            <button type="submit" class="orange-btn">Add</button>
+            <a asp-action="EditRole" asp-route-id="@Model.RoleId" class="orange-btn">Cancel</a>
+        </div>
+    </form>
+</div>
